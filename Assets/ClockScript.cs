@@ -21,9 +21,9 @@ public class ClockScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        DateTime time = DateTime.Now;
-        hourpivot.localRotation = Quaternion.Euler(0f, time.Hour * hourstoDegrees, 0f);
-        minutepivot.localRotation = Quaternion.Euler(0f, time.Minute * minutestoDegrees, 0f);
-        secondpivot.localRotation = Quaternion.Euler(0f, (time.Second+ time.Millisecond/1000f) * secondstoDegrees, 0f);
+        TimeSpan time = DateTime.Now.TimeOfDay;
+        hourpivot.localRotation = Quaternion.Euler(0f, (float)time.TotalHours * hourstoDegrees, 0f);
+        minutepivot.localRotation = Quaternion.Euler(0f, (float)time.TotalMinutes * minutestoDegrees, 0f);
+        secondpivot.localRotation = Quaternion.Euler(0f, (float)time.TotalSeconds * secondstoDegrees, 0f);
     }
 }
